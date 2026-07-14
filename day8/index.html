@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <h1 class="titlecolor">To do List</h1>
+
+<div class="input-group">
+    <input type="text" id="todo"/>
+    <button id="submitTodoButton">add todo</button>
+</div>
+
+<ul id="result"></ul>
+
+
+
+    <script>
+        // const submitTodoButton = document.getElementById("submitTodoButton");
+        // submitTodoButton.addEventListener("click", addTodo);
+
+        // function addTodo() {
+            // const todoInput = document.getElementById("todo").value
+            // // const result = document.getElementById('result')
+
+            // // const p =document.createElement('p')
+            // // p.innerHTML = todoInput
+            // // const result = document.getElementById('result')
+            // // result.appendChild(p)
+            // result.innerHTML += `<li>${todoInput}</li>`
+
+  const submitTodoButton = document.getElementById("submitTodoButton");
+    submitTodoButton.addEventListener("click", addTodo);
+
+    function addTodo() {
+        const input = document.getElementById("todo");
+        const todoInput = input.value.trim();
+
+        // ถ้าไม่ได้กรอกอะไร ไม่ต้องเพิ่ม
+        if (todoInput === "") {
+            return;
+        }
+
+        const result = document.getElementById("result");
+
+        // สร้าง <li>
+        const li = document.createElement("li");
+        li.textContent = todoInput + " ";
+
+        // สร้างปุ่ม Delete
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+
+        // เมื่อกดปุ่ม Delete ให้ลบ <li>
+        deleteButton.addEventListener("click", function () {
+            li.remove();
+        });
+
+        // นำปุ่มไปใส่ใน <li>
+        li.appendChild(deleteButton);
+
+        // นำ <li> ไปใส่ใน <ul>
+        result.appendChild(li);
+
+        // ล้างช่อง input
+        input.value = "";
+    
+    }
+
+
+
+
+
+    </script>
+
+
+    
+</body>
+</html>
